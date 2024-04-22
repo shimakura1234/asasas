@@ -4,10 +4,16 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Lucky Draw</title>
+<style>
+  img {
+    display: none; /* 画像は初めは非表示にしておく */
+  }
+</style>
 </head>
 <body>
 <button onclick="checkLuck()">抽選する</button>
 <div id="result"></div>
+<img id="winningImage" src="winning_image.jpg" alt="当たりの画像">
 
 <script>
 function checkLuck() {
@@ -18,8 +24,10 @@ function checkLuck() {
   const randomValue = Math.random();
   if (randomValue < winningProbability) {
     document.getElementById("result").innerText = "おめでとうございます！当たりです！";
+    document.getElementById("winningImage").style.display = "inline"; // 当たったら画像を表示する
   } else {
     document.getElementById("result").innerText = "残念！ハズレです。もう一度挑戦してみてください！";
+    document.getElementById("winningImage").style.display = "none"; // ハズレたら画像を非表示にする
   }
 }
 </script>
