@@ -3,30 +3,42 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moving Element Animation</title>
+<title>Random Moving Element Animation</title>
 <style>
   .moving-element {
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
     width: 100px;
     height: 100px;
     background-color: teal;
-    animation: move 3s infinite alternate;
-  }
-
-  @keyframes move {
-    0% {
-      transform: translateX(-50%);
-    }
-    100% {
-      transform: translateX(50%);
-    }
   }
 </style>
 </head>
 <body>
 <div class="moving-element"></div>
+
+<script>
+  // ページが読み込まれたら実行する関数
+  document.addEventListener("DOMContentLoaded", function() {
+    // 移動対象の要素を取得
+    const element = document.querySelector(".moving-element");
+
+    // ランダムな動きを与える関数
+    function moveRandom() {
+      // ランダムなX座標とY座標を生成
+      const randomX = Math.random() * window.innerWidth;
+      const randomY = Math.random() * window.innerHeight;
+
+      // 要素の位置を変更
+      element.style.left = randomX + "px";
+      element.style.top = randomY + "px";
+    }
+
+    // 一定の間隔でランダムな動きを与える
+    setInterval(moveRandom, 1000);
+  });
+</script>
 </body>
 </html>
+
