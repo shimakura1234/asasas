@@ -3,39 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fast Random Moving Element Animation</title>
-<style>
-  .moving-element {
-    position: absolute;
-    width: 100px;
-    height: 100px;
-    background-color: teal;
-  }
-</style>
+<title>Lucky Draw</title>
 </head>
 <body>
-<div class="moving-element"></div>
+<button onclick="checkLuck()">抽選する</button>
+<div id="result"></div>
 
 <script>
-  // ページが読み込まれたら実行する関数
-  document.addEventListener("DOMContentLoaded", function() {
-    // 移動対象の要素を取得
-    const element = document.querySelector(".moving-element");
-
-    // ランダムな動きを与える関数
-    function moveRandom() {
-      // ランダムなX座標とY座標を生成
-      const randomX = Math.random() * (window.innerWidth - element.offsetWidth);
-      const randomY = Math.random() * (window.innerHeight - element.offsetHeight);
-
-      // 要素の位置を変更
-      element.style.left = randomX + "px";
-      element.style.top = randomY + "px";
-    }
-
-    // 一定の間隔でランダムな動きを与える
-    setInterval(moveRandom, 200); // 速度を上げるために間隔を短く
-  });
+function checkLuck() {
+  // 258分の1の確率で当たりとする
+  const winningProbability = 1 / 258;
+  
+  // ランダムな数値を生成し、当たりかどうかを判定する
+  const randomValue = Math.random();
+  if (randomValue < winningProbability) {
+    document.getElementById("result").innerText = "おめでとうございます！当たりです！";
+  } else {
+    document.getElementById("result").innerText = "残念！ハズレです。もう一度挑戦してみてください！";
+  }
+}
 </script>
 </body>
 </html>
